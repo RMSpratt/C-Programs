@@ -212,8 +212,9 @@ void removeAll(Node** list) {
             free(temp->previous);
         }
 
-        //Free the last node in the list
+        //Free the last node in the list and set the head pointer to NULL
         free(temp);
+        temp = NULL;
     }
 }
 
@@ -233,6 +234,7 @@ void removeBack(Node** list) {
     //If the list only has one node, free it directly
     else if (temp->next == NULL) {
         free(temp);
+        temp = NULL;
     }
 
     //Otherwise,
@@ -273,6 +275,7 @@ void removeFront(Node** list) {
     //If the list only has one node, free it directly
     else if (temp->next == NULL) {
         free(temp);
+        temp = NULL;
     }
 
     //Otherwise,
@@ -311,6 +314,21 @@ void removeSpecific(Node** list, char* data) {
         return;
     }
 
+    //If the list has one node left
+    else if (temp->next == NULL) {
+        
+        //If the data being searched for matches, free the node and set the list head to NULL
+        if (strcmp(temp->data, data) == 0) {
+            free(temp);
+            temp = NULL;
+        }
+
+        //Otherwise, simply return
+        else {
+            return;
+        }
+    }
+
     //Otherwise,
     else {
 
@@ -338,11 +356,6 @@ void removeSpecific(Node** list, char* data) {
 
         //Otherwise, remove it
         else {
-
-            //If this is the only node in the list
-            if (it->previous == NULL && it->next == NULL) {
-                free(temp);
-            }
 
             //If this is the first node in the list
             if (it->previous == NULL && it->next != NULL) {
