@@ -1,3 +1,14 @@
+/*
+ * Author: Reed Spratt
+ *
+ * Description: This program sorts an array of integers in ascending order using mergesort. It requires the user to specify the number of elements in the passed integer array.
+ *              No dynamic memory allocation is used for this program.
+ *
+ * Date: May 8th 2019
+*/
+
+
+
 #include <stdio.h>
 
 
