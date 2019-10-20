@@ -1,0 +1,339 @@
+Doubly Linked List API Pseudocode
+
+
+//Node Structure
+struct node {
+    void* data;
+
+    struct node* previous
+    struct node* next
+
+} node
+
+
+
+//Function createNode
+function createNode(node** new, void* data) {
+
+	//Make a temporary pointer to the new node
+	node* temp = *new
+
+	//Allocate memory for the node (temp)
+
+	//Allocate memory for the node's data if necessary (temp)
+
+	//Set the new node's pointers to NULL (Important!)
+	temp->previous = NULL
+	temp->next = NULL
+
+	//Save the changes made in the function to the original node
+	*new = temp
+
+	//Return the allocated node
+	return new
+}
+
+
+
+//Function insertToBack
+function insertToBack(node** head, node* new) {
+	
+	//Make a temporary pointer to the list head
+	node* temp = *head
+
+	//If the new node is NULL, exit the function
+	if new == NULL {
+		return
+	}
+
+	//If the list is empty
+	if head == NULL {
+
+		//Set the head to point to the new node
+		temp = new
+	}
+
+	//Else the list is not empty
+	else {
+
+		//Make a list iterator and set it to the head pointer
+		node* iterator = temp
+
+		//Iterate to the last node of the list
+		while iterator->next != NULL {
+			iterator = iterator->next
+		}
+
+		//Set the new node to point back to the previous last node
+		new->previous = iterator
+
+		//Set the previous last node to point ahead to the new node
+		iterator->next = new
+	}
+
+	//Save the changes made in the function to the original list
+	*head = temp
+}
+
+
+
+//Function insertToFront
+function insertToFront(node** head, node* new) {
+	
+	//Make a temporary pointer to the list head
+	node* temp = head
+
+	//If the new node is empty, exit the function
+	if new == NULL {
+		return
+	}
+
+	//If the list is empty
+	if head == NULL {
+
+		//Set the head to point to the new node
+		temp = new
+	}
+
+	else {
+
+		//Set the current head node to point back to the new one
+		temp->previous = new
+
+		//Set the new node to point ahead to the previous head node
+		new->next = temp
+
+		//Set the head pointer to the new node
+		temp = new
+	}
+
+	//Save the changes made in the function to the original list
+	*head = temp
+}
+
+
+
+//Function removeAllNodes
+function removeAllNodes(node** head) {
+
+	//Make a temporary pointer to the list head
+	node* temp = *list
+
+	//If the list is empty, return
+	if temp == NULL {
+		return
+	}
+
+	//Else the list is not empty
+	else {
+
+		//Iterate until the last node of the list
+		while (temp->next != NULL) {
+
+			//Set the temporary pointer to the next node in the list
+			temp = temp->next
+
+			//Deallocate the node pointed back to by temp (temp->previous)
+		}
+
+		//Free the last node in the list (temp)
+
+		//Set temp to NULL
+		temp = NULL
+
+		//Save the changes made in the function to the original list
+		*head = temp
+	}
+}
+
+
+
+//Function removeFromBack
+function removeFromBack(node** head) {
+
+	//Make a temporary pointer to the list head
+	node* temp = head
+
+	//If the list is empty, return
+	if temp == NULL {
+		return
+	}	
+
+	//Else if the list only has one node
+	else if temp->next == NULL {
+
+		//Deallocate the single node (temp)
+
+		//Set the temporary head pointer to NULL (Good measure)
+		temp = NULL
+	}
+
+	//Else the list has more than one node
+	else {
+
+		//Make a list iterator and set it to the head pointer
+		node* iterator = temp
+
+		//Iterate to the last node of the list
+		while iterator->next != NULL {
+			iterator = iterator->next
+		}
+
+		//Set the second last node to point ahead to NULL
+		it->previous->next = NULL
+
+		//Remove the last node from the list (iterator)
+	}
+
+	//Save the changes made in the function to the original list
+	*head = temp;
+}
+
+
+
+//Function removeFromFront
+function removeFromFront(node** head) {
+
+	//Make a temporary pointer to the list head
+	node* temp = head
+
+	//If the list is empty, return
+	if temp == NULL {
+		return
+	}
+
+	//Else if the list only has one node
+	else if temp->next == NULL {
+		
+		//Deallocate the single node (temp)
+
+		//Set the temporary head pointer to NULL (Good measure)
+		temp = NULL
+	}
+
+	//Else, the list has more than one node
+	else {
+
+		//Set the temporary head pointer to point ahead to the second list node
+		temp = temp->next
+
+		//Free the first node in the list (temp->previous)
+
+		//Set the new head node to point back to NULL
+		temp->previous = NULL
+	}
+
+	//Save the changes made in the function to the original list
+	*head = temp;
+}
+
+
+
+//Function removeSpecificNode
+function removeSpecificNode(node** head, void* data) {
+	
+	//Make a temporary pointer to the list head
+	node* temp = head
+
+	//If the data to search for is NULL, return
+	if data == NULL {
+		return
+	}
+
+	//If the list is empty, return
+	if temp == NULL {
+		return
+	}
+
+	//Else if there is one node in the list
+	else if temp->next == NULL {
+
+		//If the node's data matches the desired data
+		if temp->data == data {
+
+			//Deallocate the sole node
+
+			//Set the node to NULL (List is now empty)
+			temp = NULL
+		}
+
+		//Else this isn't the node we want
+		else {
+
+			//Return, we did not find the node being searched for
+			return
+		}
+	}
+
+	//Else, there are two or more nodes in the list
+	else {
+
+		//Make a list iterator and set it to the head pointer
+		node* iterator = temp
+
+		//Iterate to the end of the list
+		while (iterator != NULL) {
+
+			//If the node data matches the desired data
+			if (iterator->data == data) {
+
+				//Stop iterating
+				break
+			}
+
+			//Else, the node data doesn't match the desired data
+			else {
+
+				//Keep iterating
+				iterator = iterator->next
+			}
+		}
+
+		//If we reached the end of the list without finding the desired data
+		if iterator == NULL {
+
+			//Return, we did not find the node being searched for
+			return
+		}
+
+		//Else, we found the node with the desired data
+		else {
+
+			//If this is the first node in the list
+			if iterator->previous == NULL and iterator->next != NULL {
+
+				//Set the second node in the list to point back to NULL
+				iterator->next->previous = NULL
+
+				//Set the head of the list to be the second node
+				temp = iterator->next
+
+				//Deallocate the first node (iterator)
+			}
+
+			//Else if this is the last node in the list
+			else if iterator->previous != NULL and iterator->next == NULL {
+
+				//Set the second last node to point ahead to NULL
+				iterator->previous->next = NULL
+
+				//Deallocate the last node (iterator)
+			}
+
+			//Else, this node is in the middle of the list
+			else {
+
+				//Set the previous node to point ahead to the one after the iterator
+				it->previous->next = it->next
+
+				//Set the next node to point back to the one before the iterator
+				it->next->previous = it->previous
+
+				//Deallocate the middle node (iterator)
+			}
+		}
+	}
+
+	//Save the changes made in the function to the original list
+	*head = temp;
+}
