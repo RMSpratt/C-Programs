@@ -96,39 +96,39 @@ void removeSpecific(Node** list, char* data);
 //Function insertBack
 void insertBack(Node** list, Node* newNode) {
 
-    //Temporary Node object for modifying the listxs
+	//Make a temporary pointer to the list
     Node* temp = *list;
 
-    //If the passed Node object is NULL, return
+	//If the new node is NULL, exit the function
     if (newNode == NULL) {
         printf("ERROR: Passed node to insert is NULL\n");
         return;
     }
 
-    //If the list is empty, set it equal to the new node
+	//If the list is empty set the head to point to the new node
     if (temp == NULL) {
         temp = newNode;
     }
 
-    //Otherwise,
+	//Else the list is not empty
     else {
 
-        //Create an iterator to get to the back of the list
+		//Make a list iterator and set it to the head pointer
         Node* it = temp;
 
-        //Navigate to the back of the list
+		//Iterate to the last node of the list
         while (it->next != NULL) {
             it = it->next;
         }
         
-        //Set the new node to point to the previous back node
+		//Set the new node to point back to the previous last node
         newNode->previous = it;
 
-        //Set the current back node to point to the new one
+		//Set the previous last node to point ahead to the new node
         it->next = newNode;
     }
 
-    //Set the passed list to the temporary head to save the changes made
+	//Save the changes made in the function to the original list
     *list = temp;
 }
 
@@ -137,7 +137,7 @@ void insertBack(Node** list, Node* newNode) {
 //Function insertFront
 void insertFront(Node** list, Node* newNode) {
 
-    //Temporary Node object for modifying the list
+    //Temporary Node pointer for modifying the list
     Node* temp = *list;
 
     //If the passed Node object is NULL, return
@@ -216,6 +216,9 @@ void removeAll(Node** list) {
         free(temp);
         temp = NULL;
     }
+    
+    //Set the passed list to the temporary head to save the changes made
+    *list = temp;
 }
 
 
@@ -392,9 +395,9 @@ void removeSpecific(Node** list, char* data) {
                 //Free the node
                 free(it);
             }
-
-            //Set the passed list to the temporary head to save the changes made
-            *list = temp;
         }
     }
+    
+       //Set the passed list to the temporary head to save the changes made
+    *list = temp;
 }
