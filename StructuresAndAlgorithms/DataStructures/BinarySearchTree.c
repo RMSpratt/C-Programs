@@ -1,3 +1,14 @@
+/*
+ * Author: Reed Spratt
+ *
+ * Description: This program includes numerous functions that can be used to manage a binary search tree data structure.
+ *              Some functions are iterative and others are recursive.
+ *
+ * Date: December 12th 2019
+*/
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
