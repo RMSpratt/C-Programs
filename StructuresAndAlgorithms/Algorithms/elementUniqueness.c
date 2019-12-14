@@ -47,8 +47,8 @@ bool checkUniquenessIntegers(int numbers[], int numElements) {
     int j = 0;
 
     //Make sure the passed array has elements
-    if (numElements == 0) {
-        printf("The passed array can't be empty.\n");
+    if (numElements <= 0) {
+        printf("The passed array must have one or more elements.\n");
         return false;
     }
 
@@ -77,8 +77,8 @@ bool checkUniquenessStrings(char** strings, int numElements) {
     int j = 0;
 
     //Make sure the passed array has elements
-    if (numElements == 0) {
-        printf("The passed array can't be empty.\n");
+    if (numElements <= 0) {
+        printf("The passed array must have one or more elements.\n");
         return false;
     }
 
