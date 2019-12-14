@@ -52,8 +52,8 @@ void selectionSortIntegers(int numbers[], int numElements) {
     int temp;
 
     //Make sure the passed array has elements
-    if (numElements == 0) {
-        printf("The passed array cannot be empty.\n");
+    if (numElements <= 0) {
+        printf("The passed array must have one or more elements.\n");
         return;
     }
 
@@ -95,8 +95,8 @@ void selectionSortStrings(char** strings, int numElements) {
     char* temp;
 
     //Make sure the passed array has elements
-    if (numElements == 0) {
-        printf("The passed array cannot be empty.\n");
+    if (numElements <= 0) {
+        printf("The passed array must have one or more elements.\n");
         return;
     }
 
